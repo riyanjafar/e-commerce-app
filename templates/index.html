@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>e-Ticaret Sitesi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background-color: white;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Elektronik Mağazası</h1>
+    <ul>
+        {% for urun in urunler %}
+        <li>{{ urun.name }} - {{ urun.price }} TL</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
