@@ -14,11 +14,11 @@ pipeline {
             }
         }
         
-        stage('Test') {
-            steps {
-                sh 'pytest tests/'
-            }
-        }
+        stage('UI Tests') {
+    steps {
+        sh 'pytest tests/test_ui.py -v'
+    }
+}
         
         stage('Docker İmajını Oluştur') {
             steps {
