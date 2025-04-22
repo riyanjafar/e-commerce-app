@@ -2,7 +2,7 @@
 <html dir="ltr" lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>e-Ticaret Sitesi</title>
+    <title>Alışveriş Sepeti</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -24,38 +24,42 @@
             padding: 15px;
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
-        .add-to-cart {
+        .total {
+            font-weight: bold;
+            text-align: left;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .buttons {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .buttons a {
+            display: inline-block;
+            padding: 10px 20px;
             background-color: #4CAF50;
             color: white;
-            border: none;
-            padding: 8px 16px;
-            text-align: center;
             text-decoration: none;
-            display: inline-block;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .cart-link {
-            display: block;
-            text-align: right;
-            margin: 20px 0;
+            border-radius: 5px;
+            margin-right: 10px;
         }
     </style>
 </head>
 <body>
-    <h1>Elektronik Mağazası</h1>
-    <a href="/sepet" class="cart-link">Sepeti Görüntüle</a>
+    <h1>Alışveriş Sepeti</h1>
+    {% if sepet %}
     <ul>
-        {% for urun in urunler %}
-        <li>
-            <span>{{ urun.name }} - {{ urun.price }} TL</span>
-            <a href="/ekle/{{ urun.id }}" class="add-to-cart">Sepete Ekle</a>
-        </li>
+        {% for item in sepet %}
+        <li>{{ item.name }} - {{ item.price }} TL</li>
         {% endfor %}
     </ul>
+    <div class="total">Toplam: {{ toplam }} TL</div>
+    {% else %}
+    <p>Sepetiniz boş</p>
+    {% endif %}
+    <div class="buttons">
+        <a href="/">Alışverişe Devam Et</a>
+    </div>
 </body>
 </html>
